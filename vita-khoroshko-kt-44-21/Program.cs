@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
 using vita_khoroshko_kt_44_21.Database;
+using vita_khoroshko_kt_44_21.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,8 +29,9 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
+	app.UseMiddleware<ExceptionHandlerMiddleware>();
 
-app.UseAuthorization();
+	app.UseAuthorization();
 
 app.MapControllers();
 
