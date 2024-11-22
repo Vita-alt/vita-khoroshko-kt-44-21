@@ -3,6 +3,7 @@ using NLog;
 using NLog.Web;
 using vita_khoroshko_kt_44_21.Database;
 using vita_khoroshko_kt_44_21.Middlewares;
+using vita_khoroshko_kt_44_21.ServiceExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ builder.Services.AddSwaggerGen();
 
 	builder.Services.AddDbContext<StudentDbContext>(options =>
 	   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+	builder.Services.AddServices();
 
 	var app = builder.Build();
 
